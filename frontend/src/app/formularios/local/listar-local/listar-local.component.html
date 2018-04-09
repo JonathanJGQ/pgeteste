@@ -38,8 +38,8 @@
                     <td>{{local.cidade}}</td>
                     <td>{{local.telefone}}</td>
                     <td> 
-                        <a class="btn btn-primary btn-sm" routerLink=""><i class="far fa-edit" style="color:white;"></i></a>
-                        <button type="button" class="btn btn-danger btn-sm btn-table" ><i class="fas fa-times" style="color:white;"></i></button> 
+                        <a class="btn btn-primary btn-sm" [routerLink]="urlNovo" (click)="editarLocal(local)"><i class="far fa-edit" style="color:white;"></i></a>
+                        <button type="button" class="btn btn-danger btn-sm btn-table" (click)="deletaLocal(local.localCodigo)" ><i class="fas fa-times" style="color:white;"></i></button> 
                     </td>
                 </tr>
             </tbody>

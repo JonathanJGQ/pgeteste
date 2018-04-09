@@ -16,6 +16,8 @@ export class LocalComponent implements OnInit {
 
   local: Local = new Local();
 
+  editar: boolean = false;
+
   urlUsers: string;
   urlPlaces: string;
 
@@ -30,6 +32,12 @@ export class LocalComponent implements OnInit {
     this.urlUsers = "/selective/" + this.id + "/users";
     this.urlPlaces = "/selective/" + this.id + "/places";
     this.getSelective(this.id);
+
+    if(localStorage.getItem("local") != null){
+      this.local = JSON.parse(localStorage.getItem("local"));
+      this.editar = true;
+      localStorage.clear();
+    }
   }
 
   getSelective(idSelective){
@@ -39,9 +47,16 @@ export class LocalComponent implements OnInit {
   }
 
   gravarLocal(){
-    this.selectiveService.postSelectivePlace(this.id,this.local).subscribe(res =>{
-      this.router.navigate(['/selective/' + this.id + '/places'])
-    });
+    if(this.editar){
+      console.log("EDITAR");
+      this.selectiveService.updateSelectivePlace(this.id,this.local).subscribe(res =>{
+        this.router.navigate(['/selective/' + this.id + '/places'])
+      });
+    }
+    else{
+      this.selectiveService.postSelectivePlace(this.id,this.local).subscribe(res =>{
+        this.router.navigate(['/selective/' + this.id + '/places'])
+      });
+    }
   }
-
 }

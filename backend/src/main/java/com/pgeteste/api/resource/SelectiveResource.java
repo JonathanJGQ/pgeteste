@@ -70,7 +70,7 @@ public class SelectiveResource {
 			return ResponseEntity.notFound().build();
 		}
 		
-		return ResponseEntity.ok(selective.get());
+		return ResponseEntity.ok(selective.get());	
 	}
 	
 	@GetMapping("/{codigo}/users")
@@ -141,12 +141,13 @@ public class SelectiveResource {
 		return ResponseEntity.ok(localSalvo);
 	}
 	
-	@DeleteMapping("/{codigo}/user")
+	@DeleteMapping("/{codigo}/user/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void removerUsuario(@PathVariable Long codigo, @Valid @RequestBody Usuario usuario) {
+	public void removerUsuario(@PathVariable Long codigo, @PathVariable Long id) {
 		Optional<Selective> selective = selectiveRepository.findById(codigo);
 		
-		List<SelectiveUsuario> lista = selectiveUsuarioRepository.findBySelective(selective.get());		
+		List<SelectiveUsuario> lista = selectiveUsuarioRepository.findBySelective(selective.get());
+		Usuario usuario = usuarioService.buscarUsuarioPeloCodigo(id);
 		for(SelectiveUsuario selectUsuario : lista) {
 			if(selectUsuario.getCodigo() == usuario.getUsuarioCodigo()) {
 				selectiveUsuarioRepository.deleteById(selectUsuario.getCodigo());
@@ -154,12 +155,13 @@ public class SelectiveResource {
 		}
 	}
 	
-	@DeleteMapping("/{codigo}/place")
+	@DeleteMapping("/{codigo}/place/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void removerLocal(@PathVariable Long codigo, @RequestBody Local local) {
+	public void removerLocal(@PathVariable Long codigo, @PathVariable Long id) {
 		Optional<Selective> selective = selectiveRepository.findById(codigo);
 		
-		List<SelectiveLocal> lista = selectiveLocalRepository.findBySelective(selective.get());		
+		List<SelectiveLocal> lista = selectiveLocalRepository.findBySelective(selective.get());	
+		Local local = localService.buscarLocalPeloCodigo(id);
 		for(SelectiveLocal selectLocal : lista) {
 			if(selectLocal.getCodigo() == local.getLocalCodigo()) {
 				selectiveLocalRepository.deleteById(selectLocal.getCodigo());

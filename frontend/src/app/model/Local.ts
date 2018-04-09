@@ -1,5 +1,5 @@
 export class Local{
-    codigo: number;
+    localCodigo: number;
     nomeLocal: string;
     estado: string;
     pais: string;

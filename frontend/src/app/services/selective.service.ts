@@ -58,4 +58,40 @@ export class SelectiveService{
             return Observable.throw(new Error(err.status));
         });
     }
+
+    updateSelectiveUser(id:number, usuario: Usuario){
+        let completeUrl = this.url + "/" + id + "/user";
+        return this.http.put(completeUrl,usuario).map(res => {
+            return res;
+        }).catch(err => {
+            return Observable.throw(new Error(err.status));
+        });
+    }
+
+    updateSelectivePlace(id:number, local: Local){
+        let completeUrl = this.url + "/" + id + "/place";
+        return this.http.put(completeUrl,local).map(res => {
+            return res;
+        }).catch(err => {
+            return Observable.throw(new Error(err.status));
+        });
+    }
+
+    deleteSelectiveUser(id: number, usuarioId: number){
+        let completeUrl = this.url + "/" + id + "/user/" + usuarioId;
+        return this.http.delete(completeUrl).map(res => {
+            return res;
+        }).catch(err => {
+            return Observable.throw(new Error(err.status));
+        });
+    }
+
+    deleteSelectivePlace(id: number, placeId: number){
+        let completeUrl = this.url + "/" + id + "/place/" + placeId;
+        return this.http.delete(completeUrl).map(res => {
+            return res;
+        }).catch(err => {
+            return Observable.throw(new Error(err.status));
+        });
+    }
 }

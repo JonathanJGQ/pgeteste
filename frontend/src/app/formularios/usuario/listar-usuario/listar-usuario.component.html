@@ -34,8 +34,8 @@
                     <td>{{usuario.cpf}}</td>
                     <td>{{usuario.sexo}}</td>
                     <td> 
-                        <a class="btn btn-primary btn-sm" routerLink=""><i class="far fa-edit" style="color:white;"></i></a>
-                        <button type="button" class="btn btn-danger btn-sm btn-table" ><i class="fas fa-times" style="color:white;"></i></button> 
+                        <a class="btn btn-primary btn-sm" (click)="editarUsuario(usuario)" [routerLink]="urlNovo"><i class="far fa-edit" style="color:white;"></i></a>
+                        <button type="button" class="btn btn-danger btn-sm btn-table" (click)="deletaUsuario(usuario.usuarioCodigo)" ><i class="fas fa-times" style="color:white;"></i></button> 
                     </td>
                 </tr>
             </tbody>

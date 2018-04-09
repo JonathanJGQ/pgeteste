@@ -17,6 +17,8 @@ export class UsuarioComponent implements OnInit {
   urlUsers: string;
   urlPlaces: string;
 
+  editar: boolean = false;
+
   usuario: Usuario = new Usuario();
   
   sexoMap = new Map();
@@ -28,6 +30,7 @@ export class UsuarioComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
     this.id = +this.activateRoute.snapshot.paramMap.get('id');
     this.urlUsers = "/selective/" + this.id + "/users";
     this.urlPlaces = "/selective/" + this.id + "/places";
@@ -35,6 +38,12 @@ export class UsuarioComponent implements OnInit {
 
     this.sexoMap.set('M', 'Masculino');
     this.sexoMap.set('F', 'Feminino');
+
+    if(localStorage.getItem("usuario") != null){
+      this.usuario = JSON.parse(localStorage.getItem("usuario"));
+      this.editar = true;
+      localStorage.clear();
+    }
   }
   
   getSelective(idSelective){
@@ -44,9 +53,15 @@ export class UsuarioComponent implements OnInit {
   }
 
   gravarUsuario(){
-    this.selectiveService.postSelectiveUser(this.id,this.usuario).subscribe(res =>{
-      this.router.navigate(['/selective/' + this.id + '/users'])
-    });
+    if(this.editar){
+      this.selectiveService.updateSelectiveUser(this.id,this.usuario).subscribe(res =>{
+        this.router.navigate(['/selective/' + this.id + '/users'])
+      });
+    }
+    else{
+      this.selectiveService.postSelectiveUser(this.id,this.usuario).subscribe(res =>{
+        this.router.navigate(['/selective/' + this.id + '/users'])
+      });
+    }
   }
-
 }

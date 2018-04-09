@@ -39,4 +39,16 @@ export class ListarLocalComponent implements OnInit {
     });
   }
 
+  deletaLocal(codigo: number){
+    for(let local of this.places){
+      if(local.localCodigo == codigo){
+        this.places.splice(this.places.indexOf(local),1);
+      }
+    }
+  }
+
+  editarLocal(local: Local){
+    localStorage.setItem("local", JSON.stringify(local));
+  }
+
 }

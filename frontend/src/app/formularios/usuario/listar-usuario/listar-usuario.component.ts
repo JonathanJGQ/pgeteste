@@ -42,4 +42,15 @@ export class ListarUsuarioComponent implements OnInit {
     });
   }
 
+  deletaUsuario(codigo: number){
+    for(let usuario of this.users){
+      if(usuario.usuarioCodigo == codigo){
+        this.users.splice(this.users.indexOf(usuario),1);
+      }
+    }
+  }
+
+  editarUsuario(usuario: Usuario){
+    localStorage.setItem("usuario", JSON.stringify(usuario));
+  }
 }

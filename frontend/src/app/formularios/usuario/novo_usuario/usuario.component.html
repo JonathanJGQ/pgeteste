@@ -34,7 +34,7 @@
                   <option *ngFor="let sexo of sexoMap.keys()" [ngValue]="sexo">{{sexoMap.get(sexo)}}</option>
               </select>
             </td>
-            <td><br><input name="profissao"  title="Profissao" placeholder="Profissão" type="text" class="form-control form-control-sm " id="profissao"> </td>
+            <td><br><input [(ngModel)]="usuario.profissao" name="profissao"  title="Profissao" placeholder="Profissão" type="text" class="form-control form-control-sm " id="profissao"> </td>
             <td></td>
           </tr>
         </table>

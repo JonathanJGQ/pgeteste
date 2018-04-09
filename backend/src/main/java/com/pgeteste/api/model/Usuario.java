@@ -1,5 +1,6 @@
 package com.pgeteste.api.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,7 +12,8 @@ public class Usuario {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long codigo;
+	@Column(name="usuario_codigo")
+	private Long usuarioCodigo;
 	
 	@NotNull
 	private String nome;
@@ -30,12 +32,13 @@ public class Usuario {
 	
 	private String profissao;
 
-	public Long getCodigo() {
-		return codigo;
+
+	public Long getUsuarioCodigo() {
+		return usuarioCodigo;
 	}
 
-	public void setCodigo(Long codigo) {
-		this.codigo = codigo;
+	public void setUsuarioCodigo(Long usuarioCodigo) {
+		this.usuarioCodigo = usuarioCodigo;
 	}
 
 	public String getNome() {

@@ -12,7 +12,8 @@ public class Local {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long codigo;
+	@Column(name="local_codigo")
+	private Long localCodigo;
 	
 	@NotNull
 	@Column(name = "nome_local")
@@ -29,12 +30,14 @@ public class Local {
 	@NotNull
 	private String cidade;
 
-	public Long getCodigo() {
-		return codigo;
+	
+
+	public Long getLocalCodigo() {
+		return localCodigo;
 	}
 
-	public void setCodigo(Long codigo) {
-		this.codigo = codigo;
+	public void setLocalCodigo(Long localCodigo) {
+		this.localCodigo = localCodigo;
 	}
 
 	public String getNomeLocal() {

@@ -17,17 +17,18 @@ export class ListarLocalComponent implements OnInit {
 
   urlUsers: string;
   urlPlaces: string;
+  urlNovo: string;
 
   constructor(
     private selectiveService: SelectiveService,
-    private route: ActivatedRoute,
-    private router: Router
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
     this.id = +this.route.snapshot.paramMap.get('id');
     this.urlUsers = "/selective/" + this.id + "/users";
     this.urlPlaces = "/selective/" + this.id + "/places";
+    this.urlNovo = "/selective/" + this.id + "/places/new";
     this.getSelective(this.id);
   }
 

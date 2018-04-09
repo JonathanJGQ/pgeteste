@@ -62,6 +62,17 @@ public class SelectiveResource {
 	@Autowired
 	private LocalService localService;
 	
+	@GetMapping("/{codigo}")
+	private ResponseEntity<?> buscarSelective(@PathVariable Long codigo){
+		Optional<Selective> selective = selectiveRepository.findById(codigo);
+		
+		if(!selective.isPresent()) {
+			return ResponseEntity.notFound().build();
+		}
+		
+		return ResponseEntity.ok(selective.get());
+	}
+	
 	@GetMapping("/{codigo}/users")
 	private ResponseEntity<?> listarUsuarios(@PathVariable Long codigo) {
 		Optional<Selective> selective = selectiveRepository.findById(codigo);

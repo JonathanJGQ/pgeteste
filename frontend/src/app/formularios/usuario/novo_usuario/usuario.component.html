@@ -1,27 +1,48 @@
+<selective [selective]="selective"></selective>
 <div class="card">
   <div class="card-header">
-    Dados da Seleção
+    <ul class="nav nav-pills">
+        <li class="nav-item">
+          <a class="nav-link active" [routerLink]="urlUsers">Usuários</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="urlPlaces">Locais</a>
+        </li>
+    </ul>
   </div>
   <div class="card-body">
-    <table>
-      <tr>
-        <td><input name="nome"  title="Nome" placeholder="* Nome" type="text" class="form-control form-control-sm " id="nome"> </td>
-        <td><input name="email"  title="E-mail" placeholder="* e-mail" type="text" class="form-control form-control-sm " id="email"> </td>
-        <td><input name="idade"  title="Idade" placeholder="Idade" type="text" class="form-control form-control-sm" style="width: 100px" id="nome"></td>
-      </tr>
-      <tr>
-        <td><input name="cpf"  title="Cpf" placeholder="Cpf" type="text" class="form-control form-control-sm " id="cpf"> </td>
-        <td><input name="site"  title="Site" placeholder="* Site" type="text" class="form-control form-control-sm " id="site"> </td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>
-          <label>Sexo</label>
-          
-        </td>
-        <td><input name="profissao"  title="Profissao" placeholder="Profissão" type="text" class="form-control form-control-sm " id="profissao"> </td>
-        <td></td>
-      </tr>
-    </table>
+    <div class="card">
+      <div class="card-header">
+        Cadastro - Usuários
+      </div>
+      <div class="card-body">
+        <table>
+          <tr>
+            <td><input [(ngModel)]="usuario.nome" name="nome"  title="Nome" placeholder="* Nome" type="text" class="form-control form-control-sm " id="nome"> </td>
+            <td><input [(ngModel)]="usuario.email" name="email"  title="E-mail" placeholder="* e-mail" type="text" class="form-control form-control-sm " id="email"> </td>
+            <td><input [(ngModel)]="usuario.idade" name="idade"  title="Idade" placeholder="Idade" type="text" class="form-control form-control-sm" style="width: 100px" id="nome"></td>
+          </tr>
+          <tr>
+            <td><input [(ngModel)]="usuario.cpf" name="cpf"  title="Cpf" placeholder="Cpf" type="text" class="form-control form-control-sm " id="cpf"> </td>
+            <td><input [(ngModel)]="usuario.site" name="site"  title="Site" placeholder="* Site" type="text" class="form-control form-control-sm " id="site"> </td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>
+              <label style="display: contents">Sexo</label>
+              <select [(ngModel)]="usuario.sexo" name="sexo" class="form-control form-control-sm" id="sexo" >
+                  <option *ngFor="let sexo of sexoMap.keys()" [ngValue]="sexo">{{sexoMap.get(sexo)}}</option>
+              </select>
+            </td>
+            <td><br><input name="profissao"  title="Profissao" placeholder="Profissão" type="text" class="form-control form-control-sm " id="profissao"> </td>
+            <td></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="row container" style="margin-top:10px">
+      <button class="btn btn-success btn-sm" style="margin-right: 10px" (click)="gravarUsuario()" [routerLink]="urlUsers">Salvar</button>
+      <button class="btn btn-danger btn-sm" [routerLink]="urlUsers">Cancelar</button>
+    </div>
   </div>
 </div>

@@ -1,0 +1,7 @@
+td{
+    padding:0 15px 0 15px;
+}
+
+tr > td{
+    padding-bottom: 1em;
+}

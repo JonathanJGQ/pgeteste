@@ -1,3 +1,40 @@
-<p>
-  local works!
-</p>
+<selective [selective]="selective"></selective>
+<div class="card">
+  <div class="card-header">
+    <ul class="nav nav-pills">
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="urlUsers">Usuários</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" [routerLink]="urlPlaces">Locais</a>
+        </li>
+    </ul>
+  </div>
+  <div class="card-body">
+    <div class="card">
+      <div class="card-header">
+        Cadastro - Locais
+      </div>
+      <div class="card-body">
+        <table>
+          <tr>
+            <td><input [(ngModel)]="local.nomeLocal" name="nomeLocal"  title="NomeLocal" placeholder="* Nome Local" type="text" class="form-control form-control-sm " id="nome"> </td>
+            <td><input [(ngModel)]="local.pais" name="pais"  title="Pais" placeholder="* País" type="text" class="form-control form-control-sm " id="pais"> </td>
+          </tr>
+          <tr>
+            <td><input [(ngModel)]="local.estado" name="estado"  title="Estado" placeholder="Estado" type="text" class="form-control form-control-sm " id="estado"> </td>
+            <td><input [(ngModel)]="local.cidade" name="cidade"  title="Cidade" placeholder="* Cidade" type="text" class="form-control form-control-sm " id="cidade"> </td>
+          </tr>
+          <tr>
+              <td><input [(ngModel)]="local.telefone" name="telefone"  title="Telefone" placeholder="* Telefone" type="text" class="form-control form-control-sm " id="telefone"> </td>
+            <td></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="row container" style="margin-top:10px">
+      <button class="btn btn-success btn-sm" style="margin-right: 10px" (click)="gravarLocal()">Salvar</button>
+      <button class="btn btn-danger btn-sm" [routerLink]="urlPlaces">Cancelar</button>
+    </div>
+  </div>
+</div>

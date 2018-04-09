@@ -1,4 +1,8 @@
-.margins{
-    margin-left: 10px;
-    margin-right: 10px;
+
+tr > td{
+    padding-bottom: 1em;
+}
+
+td{
+    padding:0 15px 0 15px;
 }

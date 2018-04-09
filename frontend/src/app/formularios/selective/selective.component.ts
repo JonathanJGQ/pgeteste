@@ -8,7 +8,7 @@ import { Selective } from '../../model/Selective';
 })
 export class SelectiveComponent implements OnInit {
 
-  @Input('selective') selective: Selective;
+  @Input('selective') selective: Selective = new Selective();
 
   constructor() { }
 

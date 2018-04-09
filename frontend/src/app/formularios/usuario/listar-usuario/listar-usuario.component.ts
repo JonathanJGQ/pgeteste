@@ -19,6 +19,7 @@ export class ListarUsuarioComponent implements OnInit {
 
   urlUsers: string;
   urlPlaces: string;
+  urlNovo: string;
 
   constructor(
     private selectiveService: SelectiveService,
@@ -30,6 +31,7 @@ export class ListarUsuarioComponent implements OnInit {
     this.id = +this.route.snapshot.paramMap.get('id');
     this.urlUsers = "/selective/" + this.id + "/users";
     this.urlPlaces = "/selective/" + this.id + "/places";
+    this.urlNovo = "/selective/" + this.id + "/users/new";
     this.getSelective(this.id);
   }
 

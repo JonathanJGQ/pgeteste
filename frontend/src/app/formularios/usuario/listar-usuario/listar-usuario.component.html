@@ -1,0 +1,46 @@
+<selective [selective]="selective"></selective>
+<div class="card">
+  <div class="card-header">
+    <ul class="nav nav-pills">
+        <li class="nav-item">
+          <a class="nav-link active" [routerLink]="urlUsers">Usuários</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="urlPlaces">Locais</a>
+        </li>
+    </ul>
+  </div>
+  <div class="card-body">
+    <div class="card">
+      <div class="card-header">
+        <div >
+          <label>Lista - usuários</label>
+          <button style="float:right" class="btn btn-sm btn-success">Novo</button>
+        </div>
+      </div>
+      <div class="card-body">     
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Nome Realizador</th>
+                <th scope="col">Cpf</th>
+                <th scope="col">Sexo</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let usuario of users">
+                    <td>{{usuario.nome}}</td>
+                    <td>{{usuario.cpf}}</td>
+                    <td>{{usuario.sexo}}</td>
+                    <td> 
+                        <a class="btn btn-primary btn-sm" routerLink=""><i class="far fa-edit" style="color:white;"></i></a>
+                        <button type="button" class="btn btn-danger btn-sm btn-table" ><i class="fas fa-times" style="color:white;"></i></button> 
+                    </td>
+                </tr>
+            </tbody>
+          </table>
+      </div> 
+    </div>
+  </div>
+</div>

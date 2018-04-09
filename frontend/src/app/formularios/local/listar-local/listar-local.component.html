@@ -1,0 +1,50 @@
+<selective [selective]="selective"></selective>
+<div class="card">
+  <div class="card-header">
+    <ul class="nav nav-pills">
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="urlUsers">Usuários</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" [routerLink]="urlPlaces">Locais</a>
+        </li>
+    </ul>
+  </div>
+  <div class="card-body">
+    <div class="card">
+      <div class="card-header">
+        <div >
+          <label>Lista - locais</label>
+          <button style="float:right" class="btn btn-sm btn-success">Novo</button>
+        </div>
+      </div>
+      <div class="card-body">     
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Local</th>
+                <th scope="col">País</th>
+                <th scope="col">Estado</th>
+                <th scope="col">Cidade</th>
+                <th scope="col">Telefone</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let local of places">
+                    <td>{{local.nomeLocal}}</td>
+                    <td>{{local.pais}}</td>
+                    <td>{{local.estado}}</td>
+                    <td>{{local.cidade}}</td>
+                    <td>{{local.telefone}}</td>
+                    <td> 
+                        <a class="btn btn-primary btn-sm" routerLink=""><i class="far fa-edit" style="color:white;"></i></a>
+                        <button type="button" class="btn btn-danger btn-sm btn-table" ><i class="fas fa-times" style="color:white;"></i></button> 
+                    </td>
+                </tr>
+            </tbody>
+          </table>
+      </div> 
+    </div>
+  </div>
+</div>
